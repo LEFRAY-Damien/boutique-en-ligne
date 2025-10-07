@@ -18,6 +18,18 @@ class Commande
         return $this->id;
     }
 
+      /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     /**
      * Get the value of email
      */ 
