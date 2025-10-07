@@ -2,7 +2,7 @@
 
 class UtilisateurRepository
 {
-    
+
     public static function getAllUsers()
     {
         $pdo = Database::connect();

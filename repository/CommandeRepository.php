@@ -46,11 +46,23 @@ class CommandeRepository
         return $commande;
     }
 
-    public function createCommande($date, $status)
+    public function passerCommande(): int {
+        $pdo = Database::connect();
+
+        $sql = "INSERT INTO commandes (date, status) VALUES (NOW(), 'en_attente')";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+
+
+        $id_commande = $pdo->lastInsertId();
+        return $id_commande;
+    }
+
+    public function ajouterLigneCommande($date, $status, CommandesProduits $lignePanier)
     {
         $pdo = Database::connect();
 
-        $sql = 'INSERT INTO commandes (date, status) VALUES (:date, :status)';
+        $sql = 'INSERT INTO commandesProduits Values';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             'date' => $date,

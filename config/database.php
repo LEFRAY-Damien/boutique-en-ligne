@@ -5,7 +5,7 @@ class Database
 
     private static $instance = null;
 
-    public static function connect()
+    public static function connect() :PDO
     {
 
         if (!self::$instance) {

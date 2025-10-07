@@ -9,20 +9,22 @@ class Commande
     private int $id;
     private string $date;
     private string $status;
+    private int $idUser;
 
-        /**
+
+    /**
      * Get the value of email
-     */ 
+     */
     public function getId()
     {
         return $this->id;
     }
 
-      /**
+    /**
      * Set the value of email
      *
      * @return  self
-     */ 
+     */
     public function setId($id)
     {
         $this->id = $id;
@@ -32,7 +34,7 @@ class Commande
 
     /**
      * Get the value of email
-     */ 
+     */
     public function getDate()
     {
         return $this->date;
@@ -42,7 +44,7 @@ class Commande
      * Set the value of email
      *
      * @return  self
-     */ 
+     */
     public function setDate($date)
     {
         $this->date = $date;
@@ -50,9 +52,9 @@ class Commande
         return $this;
     }
 
-        /**
+    /**
      * Get the value of email
-     */ 
+     */
     public function getStatus()
     {
         return $this->status;
@@ -62,14 +64,11 @@ class Commande
      * Set the value of email
      *
      * @return  self
-     */ 
+     */
     public function setStatus($status)
     {
         $this->status = $status;
 
         return $this;
     }
-
 }
-
-?>

@@ -9,7 +9,8 @@ class Utilisateur
     private int $id;
     private string $login;
     private string $mdp;
-    private string $role;  
+    private string $role;
+
   
        /**
      * Get the value of email
