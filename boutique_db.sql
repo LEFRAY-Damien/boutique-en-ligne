@@ -69,7 +69,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `login` varchar(50) NOT NULL,
   `mdp` varchar(50) NOT NULL,
-  `role` varchar(50) NOT NULL,
+  `role` varchar(50) NOT NULL
 );
 
 --
