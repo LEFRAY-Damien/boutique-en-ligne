@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class User
+class Utilisateur
 {
 
     // Des propriétés (id, nom, email)
