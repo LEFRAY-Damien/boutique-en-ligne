@@ -25,12 +25,12 @@ class ProduitRepository
         return $produits;
     }
 
-    public function getUserById($id)
+    public function getProduitsById($id)
     {
 
         $pdo = Database::connect();
 
-        $sql = 'SELECT * FROM users WHERE id = :id';
+        $sql = 'SELECT * FROM produits WHERE id = :id';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             'id' => $id
@@ -38,24 +38,24 @@ class ProduitRepository
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $user = new Utilisateur();
-        $user->setId($result['id']);
-        $user->setLogin($result['login']);
-        $user->setRole($result['role']);
+        $produit = new Produit();
+        $produit->setId($result['id']);
+        $produit->setNom($result['nom']);
+        $produit->setStock($result['stock']);
 
-        return $user;
+        return $produit;
     }
 
-    public function createUser($login, $mdp, $role)
+    public function createProduit($nom, $stock)
     {
         $pdo = Database::connect();
 
-        $sql = 'INSERT INTO users (login, mdp, role) VALUES (:login, :mdp, :role)';
+        $sql = 'INSERT INTO produits ( nom, stock) VALUES (:nom, :stock)';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            'login' => $login,
-            'mdp' => $mdp,
-            'role' => $role
+          
+            'nom' => $nom,
+            'stock' => $stock
         ]);
     }
 }
