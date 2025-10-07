@@ -1,8 +1,8 @@
 <?php
 
-class UtilisateurRepository {
-
-    // Des méthodes (getAllUsers(), getUserById($id), ...)
+class UtilisateurRepository
+{
+    
     public static function getAllUsers()
     {
         $pdo = Database::connect();
@@ -14,11 +14,11 @@ class UtilisateurRepository {
 
         $users = [];
 
-        foreach($result as $r) {
+        foreach ($result as $r) {
             $user = new Utilisateur();
             $user->setId($result['id']);
-            $user->setNom($result['nom']);
-            $user->setEmail($result['email']);
+            $user->setLogin($result['login']);
+            $user->setRole($result['role']);
             $users[] = $user;
         }
 
@@ -38,56 +38,24 @@ class UtilisateurRepository {
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $user = new User();
+        $user = new Utilisateur();
         $user->setId($result['id']);
-        $user->setNom($result['nom']);
-        $user->setEmail($result['email']);
+        $user->setLogin($result['login']);
+        $user->setRole($result['role']);
 
         return $user;
     }
 
-    public function createUser($nom, $email)
+    public function createUser($login, $mdp, $role)
     {
-
-        // $db = new Database();
-        // $pdo = $db->connect();
-
         $pdo = Database::connect();
 
-        $sql = 'INSERT INTO users (nom, email) VALUES (:nom, :email)';
+        $sql = 'INSERT INTO users (login, mdp, role) VALUES (:login, :mdp, :role)';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            'nom' => $nom,
-            'email' => $email
-        ]);
-    }
-
-    public function updateUser($id, $nom)
-    {
-        // $db = new Database();
-        // $pdo = $db->connect();
-
-        $pdo = Database::connect();
-
-        $sql = 'UPDATE users SET nom = :nom WHERE id = :id';
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            'nom' => $nom,
-            'id' => $id
-        ]);
-    }
-
-    public function deleteUser($id)
-    {
-        // $db = new Database();
-        // $pdo = $db->connect();
-
-        $pdo = Database::connect();
-
-        $sql = 'DELETE FROM users WHERE id = :id';
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            'id' => $id
+            'login' => $login,
+            'mdp' => $mdp,
+            'role' => $role
         ]);
     }
 }
