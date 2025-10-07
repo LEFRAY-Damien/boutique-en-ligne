@@ -8,7 +8,7 @@ class UtilisateurController
             $utilisateurRepo = new UtilisateurRepository;
             $utilisateurRepo->createUser($_POST['login'], $_POST['mdp'], "client");
 
-            header("Location:index.php?page=afficherproduits");
+            header("Location: index.php?page=afficherproduits");
         }
 
         require('view/creerCompte.php');
@@ -24,13 +24,14 @@ class UtilisateurController
                 $_SESSION["user_id"]= $utilisateur->getId();
                 $_SESSION["role"]= $utilisateur->getRole();
 
-                header("Location:index.php?page=afficherproduits");
+                header("Location: index.php?page=afficherproduits");
 
             }else{
                 echo "identifiants incorrects.";
             }
 
         }
+        require('view/login.php');
 
     }
 }
