@@ -43,7 +43,7 @@ class Commande
      *
      * @return  self
      */ 
-    public function setLogin($date)
+    public function setDate($date)
     {
         $this->date = $date;
 
