@@ -18,11 +18,11 @@ class CommandeRepository
             $commande = new Commande();
             $commande->setId($result['id']);
             $commande->setDate($result['date']);
-            $commande->setRole($result['role']);
+            $commande->setStatus($result['status']);
             $commandes[] = $commande;
         }
 
-        return $users;
+        return $commandes;
     }
 
     public function getUserById($id)
@@ -30,7 +30,7 @@ class CommandeRepository
 
         $pdo = Database::connect();
 
-        $sql = 'SELECT * FROM users WHERE id = :id';
+        $sql = 'SELECT * FROM commandes WHERE id = :id';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             'id' => $id
@@ -38,24 +38,23 @@ class CommandeRepository
 
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $user = new Utilisateur();
-        $user->setId($result['id']);
-        $user->setLogin($result['login']);
-        $user->setRole($result['role']);
+        $commande = new Commande();
+        $commande->setId($result['id']);
+        $commande->setDate($result['date']);
+        $commande->setStatus($result['status']);
 
-        return $user;
+        return $commande;
     }
 
-    public function createUser($login, $mdp, $role)
+    public function createCommande($date, $status)
     {
         $pdo = Database::connect();
 
-        $sql = 'INSERT INTO users (login, mdp, role) VALUES (:login, :mdp, :role)';
+        $sql = 'INSERT INTO commandes (date, status) VALUES (:date, :status)';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            'login' => $login,
-            'mdp' => $mdp,
-            'role' => $role
+            'date' => $date,
+            'status' => $status
         ]);
     }
 }
