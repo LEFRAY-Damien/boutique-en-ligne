@@ -16,9 +16,9 @@ class ProduitRepository
 
         foreach ($result as $r) {
             $produit = new Produit();
-            $produit->setId($result['id']);
-            $produit->setNom($result['nom']);
-            $produit->setStock($result['stock']);
+            $produit->setId($r['id']);
+            $produit->setNom($r['nom']);
+            $produit->setStock($r['stock']);
             $produits[] = $produit;
         }
 
