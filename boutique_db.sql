@@ -30,7 +30,7 @@ CREATE TABLE `commandes` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
   `status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -45,7 +45,7 @@ CREATE TABLE `commandes_produits` (
   `quantite` int(11) NOT NULL,
   FOREIGN KEY (id_commande) REFERENCES commandes(id),
   FOREIGN KEY (id_produit) REFERENCES produits(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,7 @@ CREATE TABLE `produits` (
   `id` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `stock` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -70,9 +70,7 @@ CREATE TABLE `users` (
   `login` varchar(50) NOT NULL,
   `mdp` varchar(50) NOT NULL,
   `role` varchar(50) NOT NULL,
-  `id_commande` int(11) NOT NULL,
-  FOREIGN KEY (id_commande) REFERENCES commandes(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+);
 
 --
 -- Index pour les tables déchargées
