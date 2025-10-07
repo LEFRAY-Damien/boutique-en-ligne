@@ -16,8 +16,13 @@ class AdminController
 
     public function afficherProduits()
     {
-        $produitRepo = new ProduitRepository;
-        $produits = $produitRepo->getAllProduits();
-        require('view/afficherProduits.php');
+        if (!isset($_SESSION["user_id"])) {
+
+            header("location:index.php?page=seconnecter");
+        } else {
+            $produitRepo = new ProduitRepository;
+            $produits = $produitRepo->getAllProduits();
+            require('view/afficherProduits.php');
+        }
     }
 }

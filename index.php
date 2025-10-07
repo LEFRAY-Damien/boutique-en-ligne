@@ -2,9 +2,16 @@
 
 require_once(__DIR__ . '/config/database.php');
 require_once(__DIR__ . '/config/router.php');
+
 require_once(__DIR__ . '/model/Produit.php');
+require_once(__DIR__ . '/model/Utilisateur.php');
+
 require_once(__DIR__ . '/repository/ProduitRepository.php');
+require_once(__DIR__ . '/repository/UtilisateurRepository.php');
+
 require_once(__DIR__ . '/controller/AdminController.php');
+require_once(__DIR__ . '/controller/UtilisateurController.php');
+
 
 
 ?>

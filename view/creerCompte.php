@@ -1,4 +1,4 @@
-<form action="">
+<form action="index.php?page=creercompte" method="POST">
     <label for="">Nom de compte : </label>
     <input type="text" name="login" id="username">
     <label for="">Mot de passe : </label>

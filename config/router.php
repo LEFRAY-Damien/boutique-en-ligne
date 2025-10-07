@@ -16,6 +16,17 @@ class Router{
                     $controller->afficherProduits();
                     break;
 
+                case 'creercompte':
+                    $controller = new UtilisateurController;
+                    $controller->creerUtilisateur();
+                    break;
+
+                case 'seconnecter':
+                    $controller = new UtilisateurController;
+                    $controller->connexionUtilisateur();
+                    break;
+
+
 
                 /* case 'login':
                     $controller = new UserController();
