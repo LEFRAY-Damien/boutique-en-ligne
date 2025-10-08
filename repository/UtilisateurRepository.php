@@ -41,6 +41,7 @@ class UtilisateurRepository
         $user = new Utilisateur();
         $user->setId($result['id']);
         $user->setLogin($result['login']);
+        $user->setMdp($result['mdp']);
         $user->setRole($result['role']);
 
         return $user;
@@ -62,6 +63,7 @@ class UtilisateurRepository
         $user = new Utilisateur();
         $user->setId($result['id']);
         $user->setLogin($result['login']);
+        $user->setMdp($result['mdp']);
         $user->setRole($result['role']);
 
         return $user;
