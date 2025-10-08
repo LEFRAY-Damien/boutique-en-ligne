@@ -42,7 +42,9 @@ class Router{
                     $controller->deconnecterUtilisateur();
                     break;
 
-
+                case 'ajouterpanier':
+                    $controller = new CommandeController;
+                    $controller->ajouterAuPanier();
 
                 /* case 'login':
                     $controller = new UserController();

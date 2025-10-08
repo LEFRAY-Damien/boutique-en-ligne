@@ -14,7 +14,8 @@ class AdminController
         require('view/creerProduits.php');
     }
 
-    public function modifierProduit(){
+    public function modifierProduit()
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $produit = new ProduitRepository;
@@ -29,7 +30,8 @@ class AdminController
         require('view/modifierProduit.php');
     }
 
-    public function supprimerProduit(){
+    public function supprimerProduit()
+    {
         if (isset($_GET['id'])) {
 
             $produit = new ProduitRepository;
@@ -42,6 +44,11 @@ class AdminController
 
     public function afficherProduits()
     {
+        if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+            $utilisateurEstAdmin = true;
+        } else {
+            $utilisateurEstAdmin = false;
+        }
         if (!isset($_SESSION["user_id"])) {
             header("Location: index.php?page=seconnecter");
         } else {

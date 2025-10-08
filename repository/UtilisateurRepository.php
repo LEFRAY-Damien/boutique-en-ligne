@@ -83,4 +83,17 @@ class UtilisateurRepository
             'role' => $role
         ]);
     }
+
+    public function ajouterIdCommande($id,$idCommande){
+        $pdo = Database::connect();
+
+        $sql = 'UPDATE users SET id_commande = :id_commande
+        WHERE id = :id';
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'id_commande' => $idCommande,
+            'id' => $id
+        ]);
+    }
 }
