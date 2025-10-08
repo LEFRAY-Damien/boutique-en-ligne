@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once(__DIR__ . '/config/database.php');
 require_once(__DIR__ . '/config/router.php');
 
@@ -11,7 +13,6 @@ require_once(__DIR__ . '/repository/UtilisateurRepository.php');
 
 require_once(__DIR__ . '/controller/AdminController.php');
 require_once(__DIR__ . '/controller/UtilisateurController.php');
-
 
 
 ?>

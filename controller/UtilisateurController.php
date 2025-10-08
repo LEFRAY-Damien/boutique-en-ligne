@@ -2,7 +2,8 @@
 
 class UtilisateurController
 {
-    public function creerUtilisateur() {
+    public function creerUtilisateur()
+    {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $utilisateurRepo = new UtilisateurRepository;
@@ -14,24 +15,24 @@ class UtilisateurController
         require('view/creerCompte.php');
     }
 
-    public function connexionUtilisateur(){
+    public function connexionUtilisateur()
+    {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
             $utilisateurRepo = new UtilisateurRepository;
             $utilisateur = $utilisateurRepo->getUserByLogin($_POST["login"]);
 
-            if ($utilisateur && password_verify($_POST["mdp"], $utilisateur->getMdp())){
-                $_SESSION["user_id"]= $utilisateur->getId();
-                $_SESSION["role"]= $utilisateur->getRole();
+            if ($utilisateur && password_verify($_POST["mdp"], $utilisateur->getMdp())) {
+
+                $_SESSION["user_id"] = $utilisateur->getId();
+                $_SESSION["role"] = $utilisateur->getRole();
 
                 header("Location: index.php?page=afficherproduits");
-
-            }else{
+            } else {
                 echo "identifiants incorrects.";
             }
-
         }
         require('view/login.php');
-
     }
 }
