@@ -18,7 +18,7 @@ class UtilisateurController
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $utilisateurRepo = new UtilisateurRepository;
-            $utilisateur= $utilisateurRepo->getUserByLogin($_POST["login"]);
+            $utilisateur = $utilisateurRepo->getUserByLogin($_POST["login"]);
 
             if ($utilisateur && password_verify($_POST["mdp"], $utilisateur->getMdp())){
                 $_SESSION["user_id"]= $utilisateur->getId();
