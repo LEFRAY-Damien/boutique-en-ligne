@@ -35,4 +35,9 @@ class UtilisateurController
         }
         require('view/login.php');
     }
+
+    public function deconnecterUtilisateur(){
+        session_destroy();
+        header("Location: index.php");
+    }
 }

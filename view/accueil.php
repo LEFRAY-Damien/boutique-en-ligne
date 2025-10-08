@@ -1,0 +1,1 @@
+<h1>Bienvenue dans la boutique en ligne !</h1>

@@ -11,6 +11,12 @@ class Router{
                     $controller = new AdminController;
                     $controller->creerProduit();
                     break;
+
+                case 'modifierproduit':
+                    $controller = new AdminController;
+                    $controller->modifierProduit($_GET['id']);
+                    break;
+
                 case 'afficherproduits':
                     $controller = new AdminController;
                     $controller->afficherProduits();
@@ -24,6 +30,11 @@ class Router{
                 case 'seconnecter':
                     $controller = new UtilisateurController;
                     $controller->connexionUtilisateur();
+                    break;
+
+                case 'sedeconnecter':
+                    $controller = new UtilisateurController;
+                    $controller->deconnecterUtilisateur();
                     break;
 
 
@@ -40,6 +51,9 @@ class Router{
                     echo 'Page not found';
                     break;
             }
+        } else {
+            $controller = new AccueilController;
+            $controller->afficherPageAccueil();
         }
     }
 }

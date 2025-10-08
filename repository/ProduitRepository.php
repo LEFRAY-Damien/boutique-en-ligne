@@ -58,4 +58,17 @@ class ProduitRepository
             'stock' => $stock
         ]);
     }
+
+    public function modifierProduit($nom, $stock)
+    {
+        $pdo = Database::connect();
+
+        $sql = 'UPDATE produits SET (nom, stock) VALUES (:nom, :stock)';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+          
+            'nom' => $nom,
+            'stock' => $stock
+        ]);
+    }
 }
