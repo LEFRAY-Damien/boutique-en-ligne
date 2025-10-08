@@ -25,7 +25,7 @@ class ProduitRepository
         return $produits;
     }
 
-    public function getProduitsById($id)
+    public function getProduitById($id)
     {
 
         $pdo = Database::connect();
@@ -59,16 +59,26 @@ class ProduitRepository
         ]);
     }
 
-    public function modifierProduit($nom, $stock)
+    public function modifierProduit($id, $nom, $stock)
     {
         $pdo = Database::connect();
 
-        $sql = 'UPDATE produits SET (nom, stock) VALUES (:nom, :stock)';
+        $sql = 'UPDATE produits SET nom = :nom, stock = :stock
+        WHERE id = :id';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-          
             'nom' => $nom,
-            'stock' => $stock
+            'stock' => $stock,
+            'id' => $id
         ]);
+    }
+
+    public function supprimerProduit($id)
+    {
+        $pdo = Database::connect();
+
+        $sql = 'DELETE FROM produits WHERE id = :id';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['id' => $id]);
     }
 }

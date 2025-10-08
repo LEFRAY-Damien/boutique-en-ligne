@@ -14,7 +14,12 @@ class Router{
 
                 case 'modifierproduit':
                     $controller = new AdminController;
-                    $controller->modifierProduit($_GET['id']);
+                    $controller->modifierProduit();
+                    break;
+
+                case 'supprimerproduit':
+                    $controller = new AdminController;
+                    $controller->supprimerProduit();
                     break;
 
                 case 'afficherproduits':

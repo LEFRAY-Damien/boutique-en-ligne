@@ -14,18 +14,30 @@ class AdminController
         require('view/creerProduits.php');
     }
 
-    public function modifierProduit($id){
+    public function modifierProduit(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $produit = new ProduitRepository;
-            $produit->modifierProduit($_POST['nomProduit'], $_POST['stockProduit']);
+
+            $produit->modifierProduit($_POST['id'], $_POST['nomProduit'], $_POST['stockProduit']);
 
             header("Location: index.php?page=afficherproduits");
         }
-        $produitModifie = new ProduitRepository;
-        $produitModifie->getProduitsById($id);
+        $produitRepo = new ProduitRepository;
+        $produitModifie = $produitRepo->getProduitById($_GET['id']);
 
         require('view/modifierProduit.php');
+    }
+
+    public function supprimerProduit(){
+        if (isset($_GET['id'])) {
+
+            $produit = new ProduitRepository;
+
+            $produit->supprimerProduit($_GET['id']);
+
+            header("Location: index.php?page=afficherproduits");
+        }
     }
 
     public function afficherProduits()
