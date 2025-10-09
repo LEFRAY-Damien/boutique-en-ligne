@@ -3,22 +3,42 @@
 class CommandeRepository
 {
 
-    public static function getAllCommandes()
+    public function getAllCommandes()
     {
         $pdo = Database::connect();
 
         $sql = 'SELECT * FROM commandes';
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $commandes = [];
 
-        foreach ($result as $r) {
+        foreach ($results as $r) {
             $commande = new Commande();
-            $commande->setId($result['id']);
-            $commande->setDate($result['date']);
-            $commande->setStatus($result['status']);
+            $commande->setId($r['id']);
+            $commande->setDate($r['date']);
+            $commandes[] = $commande;
+        }
+
+        return $commandes;
+    }
+
+    public function getCommandesByUserId($userID)
+    {
+        $pdo = Database::connect();
+
+        $sql = 'SELECT * FROM commandes WHERE id_user = :user_id';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['user_id' => $userID]);
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $commandes = [];
+
+        foreach ($results as $r) {
+            $commande = new Commande();
+            $commande->setId($r['id']);
+            $commande->setDate($r['date']);
             $commandes[] = $commande;
         }
 

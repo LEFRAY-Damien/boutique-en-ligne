@@ -1,6 +1,12 @@
 <?php
 
 $utilisateurEstConnecte = isset($_SESSION['user_id']);
+
+if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
+    $utilisateurEstAdmin = true;
+} else {
+    $utilisateurEstAdmin = false;
+}
 ?>
 
 <nav class="navbar navbar-expand-lg bg-body-secondary">
@@ -23,31 +29,32 @@ $utilisateurEstConnecte = isset($_SESSION['user_id']);
                         <a class="nav-link active" aria-current="page" href="index.php?page=seconnecter">Se connecter</a>
                     </li>
                 <?php } else { ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link active dropdown-toggle" href="index.php?page=afficherpanier" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Votre Panier
-                        </a>
-                        <ul class="dropdown-menu">
-                            <?php foreach ($_SESSION['panier'] as $produitpanier) { ?>
+                    <?php if (!$utilisateurEstAdmin) { ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" href="index.php?page=afficherpanier" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Votre Panier
+                            </a>
+                            <ul class="dropdown-menu">
+                                <?php if (isset($_SESSION['panier'])) {
+                                    foreach ($_SESSION['panier'] as $produitpanier) { ?>
 
 
-                                <li><?= $produitpanier[1] ?> : <?= $produitpanier[2] ?></li>
+                                        <li class="dropdown-item"><?= $produitpanier[1] ?> : <?= $produitpanier[2] ?></li>
 
-
-                            <?php } ?>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="index.php?page=validercommande">Valider la commande</a></li>
-
-                            <!--                             <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                        </ul>
-                    </li>
+                                    <?php } ?>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="index.php?page=validercommande">Valider la commande</a></li>
+                                <?php } else { ?>
+                                    <li class="dropdown-item">Votre panier est vide !</li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php?page=historiquecommandes">Historique des commandes</a>
+                        </li>
+                    <?php } ?>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.php?page=sedeconnecter">Se déconnecter</a>
                     </li>
