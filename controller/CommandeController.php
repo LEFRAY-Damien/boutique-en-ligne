@@ -35,6 +35,7 @@ class CommandeController
         if (isset($_SESSION['user_id'])) {
             $commandeRepo = new CommandeRepository;
             $commandes = $commandeRepo->getCommandesByUserId($_SESSION['user_id']);
+            $produitRepo = new ProduitRepository;
 
             require('view/historiqueCommandes.php');
         } else {

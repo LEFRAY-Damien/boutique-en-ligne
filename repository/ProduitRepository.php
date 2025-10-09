@@ -2,7 +2,7 @@
 
 class ProduitRepository
 {
-    
+
     public static function getAllProduits()
     {
         $pdo = Database::connect();
@@ -46,6 +46,32 @@ class ProduitRepository
         return $produit;
     }
 
+    public function getProduitsByCommande($idCommande)
+    {
+        $pdo = Database::connect();
+
+        $sql = 'SELECT id_produit,quantite FROM commandes_produits
+        WHERE id_commande = :id_commande';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['id_commande' => $idCommande]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($result as $ligneCommande) {
+            $sql = 'SELECT nom FROM produits
+                WHERE id = :id';
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(['id' => $ligneCommande['id_produit']]);
+            $resultat2 = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $produits[] = [
+                'nomProduit' => $resultat2['nom'],
+                'quantite' => $ligneCommande['quantite']
+            ];
+        }
+
+        return $produits;
+    }
+
     public function createProduit($nom, $stock)
     {
         $pdo = Database::connect();
@@ -53,7 +79,7 @@ class ProduitRepository
         $sql = 'INSERT INTO produits ( nom, stock) VALUES (:nom, :stock)';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-          
+
             'nom' => $nom,
             'stock' => $stock
         ]);
