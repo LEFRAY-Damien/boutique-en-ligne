@@ -34,10 +34,12 @@
                 <form action="index.php?page=ajouterpanier" method="POST">
                     <div class="modal-body">
                         <label class="text-black">Quantité</label>
-                        <input type="number" name="quantite">
+                        <input type="number" name="quantite" min="1" max="<?=$produit->getStock()?>" value='1'>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <input type="hidden" name="idproduit" value="<?=$produit->getId()?>">
+                        <input type="hidden" name="nomproduit" value="<?=$produit->getNom()?>">
                         <input type="submit" class="btn btn-primary" value="Ajouter au panier">
                     </div>
                 </form>

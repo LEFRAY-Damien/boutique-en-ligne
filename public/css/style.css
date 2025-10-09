@@ -62,7 +62,7 @@ td {
     visibility: visible;
 }
 
-#navbar {
+/* #navbar {
     position: fixed;
     left: 0;
     top: 0;
@@ -74,8 +74,8 @@ td {
     padding-top: 12px;
     padding-bottom: 12px;
     background-color: rgb(177, 56, 0);
-}
-
+} */
+/* 
 #navbar li {
     float: left;
 }
@@ -92,11 +92,11 @@ td {
     background-color: rgb(124, 39, 0);
     border-radius: 5em;
 }
-
-body {
+ */
+/* body {
     padding-top: 100px;
     padding-bottom: 100px;
-}
+} */
 
 #bienvenue {
     display: flex;

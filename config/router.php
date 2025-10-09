@@ -45,6 +45,14 @@ class Router{
                 case 'ajouterpanier':
                     $controller = new CommandeController;
                     $controller->ajouterAuPanier();
+                
+                case 'afficherpanier':
+                    $controller = new CommandeController;
+                    $controller->afficherPanier();
+
+                case 'validercommande':
+                    $controller = new CommandeController;
+                    $controller->validerCommande();
 
                 /* case 'login':
                     $controller = new UserController();

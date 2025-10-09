@@ -2,7 +2,7 @@
 
 class CommandeRepository
 {
-    
+
     public static function getAllCommandes()
     {
         $pdo = Database::connect();
@@ -46,27 +46,38 @@ class CommandeRepository
         return $commande;
     }
 
-    public function passerCommande(): int {
-        $pdo = Database::connect();
-
-        $sql = "INSERT INTO commandes (date, status) VALUES (NOW(), 'en_attente')";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-
-
-        $id_commande = $pdo->lastInsertId();
-        return $id_commande;
-    }
-
-    public function ajouterLigneCommande($date, $status, CommandesProduits $lignePanier)
+    public function passerCommande($userID, array $panier): int
     {
         $pdo = Database::connect();
 
-        $sql = 'INSERT INTO commandesProduits Values';
+        $sql = "INSERT INTO commandes (date, id_user) VALUES (NOW(), :id_user)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            'date' => $date,
-            'status' => $status
-        ]);
+        $stmt->execute(['id_user' => $userID]);
+
+
+        $id_commande = $pdo->lastInsertId();
+
+        foreach ($panier as $produit) {
+            $sql = "INSERT INTO commandes_produits (id_commande, id_produit, quantite)
+                VALUES (:id_commande, :id_produit, :quantite)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
+                'id_commande' => $id_commande,
+                'id_produit' => $produit[0],
+                'quantite' => $produit[2]
+            ]);
+
+            $sql = "UPDATE produits SET stock = stock - :difference
+                WHERE id = :id_produit";
+            
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
+                'difference' => $produit[2],
+                'id_produit' => $produit[0]
+            ]);
+        }
+
+
+        return $id_commande;
     }
 }

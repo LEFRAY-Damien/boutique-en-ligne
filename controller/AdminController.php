@@ -54,6 +54,7 @@ class AdminController
         } else {
             $produitRepo = new ProduitRepository;
             $produits = $produitRepo->getAllProduits();
+
             require('view/afficherProduits.php');
         }
     }
