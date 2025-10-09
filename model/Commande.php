@@ -8,12 +8,11 @@ class Commande
     // Des propriétés (id, nom, email)
     private int $id;
     private string $date;
-    private string $status;
     private int $idUser;
 
 
     /**
-     * Get the value of email
+     * Get the value of id
      */
     public function getId()
     {
@@ -21,7 +20,7 @@ class Commande
     }
 
     /**
-     * Set the value of email
+     * Set the value of id
      *
      * @return  self
      */
@@ -33,7 +32,7 @@ class Commande
     }
 
     /**
-     * Get the value of email
+     * Get the value of date
      */
     public function getDate()
     {
@@ -41,33 +40,13 @@ class Commande
     }
 
     /**
-     * Set the value of email
+     * Set the value of date
      *
      * @return  self
      */
     public function setDate($date)
     {
         $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of email
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Set the value of email
-     *
-     * @return  self
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
 
         return $this;
     }

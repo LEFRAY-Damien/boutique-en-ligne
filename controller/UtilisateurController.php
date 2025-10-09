@@ -7,7 +7,11 @@ class UtilisateurController
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $utilisateurRepo = new UtilisateurRepository;
-            $utilisateurRepo->createUser($_POST['login'], $_POST['mdp'], "client");
+            try {
+                $utilisateurRepo->createUser($_POST['login'], $_POST['mdp'], "client");
+            } catch (Exception $ex) {
+                echo $ex;
+            }
 
             header("Location: index.php?page=afficherproduits");
         }
@@ -21,22 +25,27 @@ class UtilisateurController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $utilisateurRepo = new UtilisateurRepository;
-            $utilisateur = $utilisateurRepo->getUserByLogin($_POST["login"]);
+            try {
+                $utilisateur = $utilisateurRepo->getUserByLogin($_POST["login"]);
 
-            if ($utilisateur && password_verify($_POST["mdp"], $utilisateur->getMdp())) {
+                if ($utilisateur && password_verify($_POST["mdp"], $utilisateur->getMdp())) {
 
-                $_SESSION["user_id"] = $utilisateur->getId();
-                $_SESSION["role"] = $utilisateur->getRole();
+                    $_SESSION["user_id"] = $utilisateur->getId();
+                    $_SESSION["role"] = $utilisateur->getRole();
 
-                header("Location: index.php?page=afficherproduits");
-            } else {
-                echo "identifiants incorrects.";
+                    header("Location: index.php?page=afficherproduits");
+                } else {
+                    echo "identifiants incorrects.";
+                }
+            } catch (Exception $ex) {
+                echo $ex;
             }
         }
         require('view/login.php');
     }
 
-    public function deconnecterUtilisateur(){
+    public function deconnecterUtilisateur()
+    {
         session_destroy();
         header("Location: index.php");
     }

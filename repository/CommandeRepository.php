@@ -45,7 +45,7 @@ class CommandeRepository
         return $commandes;
     }
 
-    public function getUserById($id)
+    public function getCommandeById($id)
     {
 
         $pdo = Database::connect();
@@ -61,7 +61,6 @@ class CommandeRepository
         $commande = new Commande();
         $commande->setId($result['id']);
         $commande->setDate($result['date']);
-        $commande->setStatus($result['status']);
 
         return $commande;
     }

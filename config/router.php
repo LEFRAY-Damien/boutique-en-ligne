@@ -1,6 +1,7 @@
 <?php
 
-class Router{
+class Router
+{
 
     public static function redirect()
     {
@@ -46,11 +47,6 @@ class Router{
                     $controller = new CommandeController;
                     $controller->ajouterAuPanier();
                     break;
-                
-                case 'afficherpanier':
-                    $controller = new CommandeController;
-                    $controller->afficherPanier();
-                    break;
 
                 case 'validercommande':
                     $controller = new CommandeController;
@@ -62,16 +58,8 @@ class Router{
                     $controller->afficherHistorique();
                     break;
 
-                /* case 'login':
-                    $controller = new UserController();
-                    $controller->login();
-                    break;
-                case 'liste-user':
-                    $controller = new UserController();
-                    $controller->liste();
-                    break; */
                 default:
-                    echo 'Page not found';
+                    echo 'Page non trouvé';
                     break;
             }
         } else {

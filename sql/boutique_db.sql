@@ -29,7 +29,8 @@ USE boutique_db;
 CREATE TABLE `commandes` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
-  `status` varchar(50) NOT NULL
+  `id_user` int(11) NOT NULL,
+  FOREIGN KEY (id_user) REFERENCES users(id)
 );
 
 -- --------------------------------------------------------
@@ -68,7 +69,7 @@ CREATE TABLE `produits` (
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `login` varchar(50) NOT NULL,
-  `mdp` varchar(50) NOT NULL,
+  `mdp` varchar(200) NOT NULL,
   `role` varchar(50) NOT NULL
 );
 

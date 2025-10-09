@@ -5,41 +5,59 @@ class CommandeController
 
     public function ajouterAuPanier()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_SESSION['user_id'])) {
+            if ($_SESSION['role'] == 'client') {
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $produitEtQuantite = [$_POST['idproduit'], $_POST['nomproduit'], $_POST['quantite']];
+                    try {
+                        $produitEtQuantite = [$_POST['idproduit'], $_POST['nomproduit'], $_POST['quantite']];
 
-            $_SESSION['panier'][] = $produitEtQuantite;
+                        $_SESSION['panier'][] = $produitEtQuantite;
+                    } catch (Exception $ex) {
+                        echo $ex;
+                    }
 
-            header("Location: index.php?page=afficherproduits");
+                    header("Location: index.php?page=afficherproduits");
+                }
+            } else {
+                header("Location: index.php");
+            }
+        } else {
+            header("Location: index.php");
         }
-    }
-
-    public function afficherPanier()
-    {
-        $produitspanier = $_SESSION['panier'];
-        require('view/layout/panier.php');
     }
 
     public function validerCommande()
     {
-        $commandeRepo = new CommandeRepository;
-        $commandeRepo->passerCommande($_SESSION['user_id'], $_SESSION['panier']);
-        unset($_SESSION['panier']);
+        if (isset($_SESSION['user_id'])) {
+            if ($_SESSION['role'] == 'client') {
+                $commandeRepo = new CommandeRepository;
+                $commandeRepo->passerCommande($_SESSION['user_id'], $_SESSION['panier']);
+                unset($_SESSION['panier']);
 
-        header("Location: index.php?page=afficherproduits");
+                header("Location: index.php?page=afficherproduits");
+            } else {
+                header("Location: index.php");
+            }
+        } else {
+            header("Location: index.php");
+        }
     }
 
     public function afficherHistorique()
     {
         if (isset($_SESSION['user_id'])) {
-            $commandeRepo = new CommandeRepository;
-            $commandes = $commandeRepo->getCommandesByUserId($_SESSION['user_id']);
-            $produitRepo = new ProduitRepository;
+            if ($_SESSION['role'] == 'client') {
+                $commandeRepo = new CommandeRepository;
+                $commandes = $commandeRepo->getCommandesByUserId($_SESSION['user_id']);
+                $produitRepo = new ProduitRepository;
 
-            require('view/historiqueCommandes.php');
+                require('view/historiqueCommandes.php');
+            } else {
+                header("Location: index.php");
+            }
         } else {
-            echo "Erreur : Vous n'êtes pas connecté";
+            header("Location: index.php");
         }
     }
 }

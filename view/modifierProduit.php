@@ -8,6 +8,6 @@
         <input type="text" name="stockProduit" value="<?=$produitModifie->getStock()?>">
         <input type="hidden" name="id" value="<?=$produitModifie->getId()?>">
 
-        <input type="submit" value="Ajouter le produit">
+        <input type="submit" value="Modifier le produit">
     </fieldset>
 </form>

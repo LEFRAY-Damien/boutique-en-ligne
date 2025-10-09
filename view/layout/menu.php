@@ -31,7 +31,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
                 <?php } else { ?>
                     <?php if (!$utilisateurEstAdmin) { ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle" href="index.php?page=afficherpanier" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link active dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Votre Panier
                             </a>
                             <ul class="dropdown-menu">
