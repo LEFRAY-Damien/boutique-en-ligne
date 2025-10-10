@@ -1,1 +1,14 @@
-<h1>Bienvenue dans la boutique en ligne !</h1>
+<div class="container text-center my-5">
+    <h1>Bienvenue dans la boutique en ligne !</h1>
+    <p class="my-5">
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis, dolor sit amet rutrum aliquam, diam est ornare ipsum, vel tempus dolor magna nec est. In eget efficitur dui. Vivamus at neque id lorem feugiat luctus. Vestibulum dictum ornare sem eu feugiat. Aenean scelerisque aliquet blandit. Quisque aliquam neque sit amet mauris varius consequat. Suspendisse vitae enim massa. Praesent quis dapibus nisi, et blandit nibh. Fusce interdum eu leo nec blandit. Suspendisse et fermentum ex.
+
+        Mauris eu aliquam ligula. Morbi velit arcu, rhoncus vitae congue ac, accumsan a risus. Maecenas eget tortor nec felis sollicitudin auctor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis vel vehicula arcu, in pellentesque lorem. Sed gravida odio id est aliquet consectetur. In malesuada sit amet purus vitae facilisis.
+
+        Integer bibendum molestie bibendum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur vitae ultrices justo. Aenean elementum convallis iaculis. Pellentesque vehicula, nisi eu consequat hendrerit, lorem ex varius urna, in pellentesque nibh ipsum eget dui. Nulla sit amet felis odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed condimentum feugiat blandit. Aenean porta ligula orci, in feugiat arcu volutpat ut. Donec dictum sollicitudin enim iaculis sodales. Proin volutpat lectus in tellus dapibus sagittis.
+
+        Phasellus ut euismod ipsum. Sed velit dui, pretium a orci in, imperdiet cursus quam. Duis eleifend venenatis leo, a dignissim dolor sagittis id. Etiam scelerisque dolor ante, quis ornare mauris venenatis vel. Curabitur vitae felis massa. Morbi auctor finibus lorem pharetra mattis. Nulla ornare gravida nisi, ac consequat mauris consectetur vel. Pellentesque quis laoreet felis. Aliquam sit amet neque ultricies, pulvinar neque sagittis, finibus arcu. Pellentesque sed sapien urna. Suspendisse eu elit rhoncus, dignissim ligula sit amet, elementum lorem.
+
+        Vivamus sit amet tempus metus. Donec et elit mauris. Proin scelerisque orci libero, sed bibendum orci suscipit eu. Nam tincidunt lacinia sem, non tristique ante ultrices facilisis. Curabitur ultricies laoreet enim quis lacinia. Sed sollicitudin rutrum urna, a molestie nulla mollis eu. Curabitur molestie eleifend neque, feugiat placerat felis volutpat vel. Vestibulum quis dui nunc. Curabitur convallis tincidunt nunc, quis rhoncus felis commodo eget. Nam sapien enim, vehicula quis viverra eget, tincidunt nec mauris. </p>
+</div>
