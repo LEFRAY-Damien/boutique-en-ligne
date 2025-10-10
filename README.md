@@ -2,7 +2,7 @@
 
 ### **Organisation**
 
- - Projet réalisé avec le système de contrôle de version Git
+ - Projet réalisé avec le système de contrôle de version Git.
 
 ### **Spécifications fonctionnelles :**
 
@@ -24,6 +24,6 @@
 
 1. **Installer le stack LAMP (Wampp ou Xamp).**
 
-2. **Importer le script SQL dans PhpMyAdmin. (sql/boutique_db.sql)**
+2. **Importer le script SQL dans PhpMyAdmin (sql/boutique_db.sql).**
 
 3. **Mettre le code source dans le dossier public du serveur.**
