@@ -11,7 +11,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
 
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container-fluid text-white">
-        <a class="navbar-brand" href="index.php">Accueil</a>
+        <a class="navbar-brand logo" href="index.php">CPascher</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -55,11 +55,11 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
                             <a class="nav-link active" aria-current="page" href="index.php?page=historiquecommandes">Historique des commandes</a>
                         </li>
                     <?php } ?>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php?page=sedeconnecter">Se déconnecter</a>
-                    </li>
-                <?php } ?>
             </ul>
+            <div class="d-flex">
+                <a class="nav-link active" aria-current="page" href="index.php?page=sedeconnecter">Se déconnecter</a>
+            </div>
+        <?php } ?>
         </div>
     </div>
 </nav>

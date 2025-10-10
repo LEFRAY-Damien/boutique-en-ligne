@@ -1,11 +1,11 @@
 <div class="align-items-center text-center">
     <div class="container my-5">
-        <h1>Liste des produits</h1>
+        <h1>Liste de nos produits tout neufs</h1>
         <?php if ($utilisateurEstAdmin) { ?>
 
             <a class="btn btn-secondary" href="index.php?page=creerproduit">Ajouter un produit</a>
+        <?php } ?>
     </div>
-<?php } ?>
 </div>
 <div class="d-flex align-content-start flex-wrap">
     <?php foreach ($produits as $produit) {
@@ -19,11 +19,11 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis suscipit neque. Mauris sodales urna non purus interdum, vitae interdum nisi lobortis. Donec volutpat turpis in nibh ornare lacinia.</p>
                 <?php if ($utilisateurEstAdmin) { ?>
                     <div class="boutonsModifs">
-                        <a class="boutonModifier card-link" href="index.php?page=modifierproduit&id=<?= $produit->getId() ?>">✏️</a>
-                        <a class="boutonSupprimer card-link" href="index.php?page=supprimerproduit&id=<?= $produit->getId() ?>">🗑️</a>
+                        <a class="boutonModifier card-link text-decoration-none" href="index.php?page=modifierproduit&id=<?= $produit->getId() ?>">✏️</a>
+                        <a class="boutonSupprimer card-link text-decoration-none" href="index.php?page=supprimerproduit&id=<?= $produit->getId() ?>">🗑️</a>
                     </div>
                 <?php } else { ?>
-                    <button class="boutonAjoutPanier card-link" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#panierModal<?= $produit->getId() ?>">🛍️</button>
+                    <button class="boutonAjoutPanier card-link btn btn-secondary" data-bs-toggle="modal" data-bs-target="#panierModal<?= $produit->getId() ?>">Ajouter au panier</button>
                 <?php } ?>
             </div>
         </div>

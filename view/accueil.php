@@ -1,5 +1,5 @@
 <div class="container text-center my-5">
-    <h1>Bienvenue dans la boutique en ligne !</h1>
+    <h1>Bienvenue chez CPascher !</h1>
     <p class="my-5">
 
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis, dolor sit amet rutrum aliquam, diam est ornare ipsum, vel tempus dolor magna nec est. In eget efficitur dui. Vivamus at neque id lorem feugiat luctus. Vestibulum dictum ornare sem eu feugiat. Aenean scelerisque aliquet blandit. Quisque aliquam neque sit amet mauris varius consequat. Suspendisse vitae enim massa. Praesent quis dapibus nisi, et blandit nibh. Fusce interdum eu leo nec blandit. Suspendisse et fermentum ex.
